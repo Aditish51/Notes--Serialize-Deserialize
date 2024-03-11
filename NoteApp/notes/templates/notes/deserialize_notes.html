@@ -1,0 +1,64 @@
+<!-- notes/templates/notes/deserialize_notes.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deserialize Notes</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #876f6f;
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+            border-bottom: 2px solid #333;
+            padding-bottom: 10px;
+        }
+        form {
+            background-color: #92ede7;
+            border: 1px solid #ddd;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 5px;
+            width: 80%;
+        }
+        input {
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px;
+            text-decoration: none;
+            color: #fff;
+            background-color: #333;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Deserialize Notes</h1>
+
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form }}
+        <button type="submit">Load Notes</button>
+    </form>
+
+    {% if deserialized_notes %}
+        <div style="margin-top: 20px; border: 1px solid #ddd; padding: 10px;">
+            <h2>Deserialized Notes:</h2>
+            <ul>
+                {% for note in deserialized_notes %}
+                    <li>{{ note }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+</body>
+</html>
+</html>

@@ -1,0 +1,65 @@
+<!-- notes/templates/notes/note_list.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Note List</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #fcd6d6;
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+            border-bottom: 2px solid #333;
+            padding-bottom: 10px;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        li {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            margin: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            display: inline-block;
+            width: 200px;
+            margin-right: 20px;
+        }
+        a {
+            display: block;
+            margin-top: 20px;
+            padding: 10px;
+            text-decoration: none;
+            color: #fff;
+            background-color: #333;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Note List</h1>
+    <ul>
+        {% for note in notes %}
+            <li>{{ note.title }} - {{ note.content }}</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'add_note' %}">Add Note</a>
+    <a href="{% url 'serialize_notes' %}">Serialize Notes</a>
+    <a href="{% url 'deserialize_notes' %}">Deserialize Notes</a>
+
+    <h2>Note List</h2>
+    <ul>
+    {% for note in notes %}
+        <li>
+            {{ note.content }}
+            <a href="{% url 'delete_note' note.id %}">Delete</a>
+        </li>
+    {% endfor %}
+    </ul>
+</body>
+</html>

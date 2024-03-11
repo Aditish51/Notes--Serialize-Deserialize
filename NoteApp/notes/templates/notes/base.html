@@ -1,0 +1,20 @@
+<!-- templates/base.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Your Note App</title>
+</head>
+<body>
+
+<nav>
+    <a href="{% url 'note_list' %}">Note List</a> |
+    <a href="{% url 'add_note' %}">Add Note</a> |
+    <a href="{% url 'deserialize_notes' %}">Deserialize Notes</a>
+</nav>
+
+{% block content %}
+{% endblock %}
+
+</body>
+</html>
